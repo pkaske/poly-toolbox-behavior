@@ -19,15 +19,15 @@
 
   <script>
     window.addEventListener('WebComponentsReady', function() {
-      var polyTools = Polymer.PolyToolboxBehavior[0];
+      var _$ = Polymer.PolyToolboxBehavior[0]._$;
       var btnClosest = document.getElementById('btnClosest');
 
       btnClosest.addEventListener('click', function() {
-        console.log(polyTools.closest(btnClosest, 'div'));
-        console.log(polyTools.closest(btnClosest, '[closest]'));
-        console.log(polyTools.closest(btnClosest, 'button'));
-        console.log(polyTools.closest(btnClosest, 'body'));
-        console.log(polyTools.closest(btnClosest, 'something')); // Should return `undefined`
+        console.log(_$.closest(btnClosest, 'div'));
+        console.log(_$.closest(btnClosest, '[closest]'));
+        console.log(_$.closest(btnClosest, 'button'));
+        console.log(_$.closest(btnClosest, 'body'));
+        console.log(_$.closest(btnClosest, 'something')); // Should return `undefined`
       });
     });
   </script>

@@ -10,36 +10,47 @@ Or see the LICENSE file that comes with this code.
     console.warn('PolyToolboxBehavior is already implemented in Polymer!');
   }
 
-  /**
-  * Simple polymer behavior that provides some useful functions.
-  *
-  * @demo demo/index.html
-  * @polymerBehavior
-  */
-  Polymer.PolyToolboxImpl = {
-
+  (function() {
     /**
-     * Find closest parent node matching the selector.
-     * First node that's checked is `node` itself.
-     *
-     * @param  {Node} node     Node to start with
-     * @param  {String} selector Query selector for the test
-     * @return {Node|undefined}          The closest matching parent node or undefined
-     */
-    closest: function(node, selector) {
-      var matches = node.matches || node.msMatchesSelector || node.oMatchesSelector;
+    * Simple polymer behavior that provides some useful functions.
+    *
+    * All functions are available in the sope of `this._$` in our element.
+    *
+    * Example:
+    * ```js
+    * attached: function() {
+    * 	var closestParent = this._$.closest(this.$.someChild, 'div');
+    * }
+    * ```
+    *
+    * @demo demo/index.html
+    * @polymerBehavior
+    */
+    Polymer.PolyToolboxImpl = {
 
-      while (node) {
-        if (matches.call(node, selector)) {
-          return node;
+      /**
+       * Find closest parent node matching the selector.
+       * First node that's checked is `node` itself.
+       *
+       * @param  {Node} node     Node to start with
+       * @param  {String} selector Query selector for the test
+       * @return {Node|undefined}          The closest matching parent node or undefined
+       */
+      closest: function(node, selector) {
+        var matches = node.matches || node.msMatchesSelector || node.oMatchesSelector;
+
+        while (node) {
+          if (matches.call(node, selector)) {
+            return node;
+          }
+          node = node.parentElement;
         }
-        node = node.parentElement;
       }
-    }
-  };
+    };
 
-  /** @polymerBehavior */
-  Polymer.PolyToolboxBehavior = [
-    Polymer.PolyToolboxImpl
-  ];
+    /** @polymerBehavior */
+    Polymer.PolyToolboxBehavior = [
+      {_$: Polymer.PolyToolboxImpl}
+    ];
+  })()
 </script>
