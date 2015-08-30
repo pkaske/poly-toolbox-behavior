@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>poly-toolbox-behavior</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../bower_components/polymer/polymer.html">
+  <link rel="import" href="../poly-toolbox-behavior.html">
+</head>
+<body>
+  <p>
+    For results, look at the console.
+  </p>
+
+  <div closest>
+    <button type="button" id="btnClosest">Find closest</button>
+  </div>
+
+  <script>
+    window.addEventListener('WebComponentsReady', function() {
+      var polyTools = Polymer.PolyToolboxBehavior[0];
+      var btnClosest = document.getElementById('btnClosest');
+
+      btnClosest.addEventListener('click', function() {
+        console.log(polyTools.closest(btnClosest, 'div'));
+        console.log(polyTools.closest(btnClosest, '[closest]'));
+        console.log(polyTools.closest(btnClosest, 'button'));
+        console.log(polyTools.closest(btnClosest, 'body'));
+        console.log(polyTools.closest(btnClosest, 'something')); // Should return `undefined`
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!--
+@license
+Copyright (c) 2015 Peter Kaske <p.kaske@gmail.com>. All rights reserved.
+This code may only be used under the MIT license found at http://opensource.org/licenses/MIT.
+Or see the LICENSE file that comes with this code.
+-->
+
+<script>
+  if (Polymer.PolyToolboxBehavior) {
+    console.warn('PolyToolboxBehavior is already implemented in Polymer!');
+  }
+
+  /**
+  * Simple polymer behavior that provides some useful functions.
+  *
+  * @demo demo/index.html
+  * @polymerBehavior
+  */
+  Polymer.PolyToolboxImpl = {
+
+    /**
+     * Find closest parent node matching the selector.
+     * First node that's checked is `node` itself.
+     *
+     * @param  {Node} node     Node to start with
+     * @param  {String} selector Query selector for the test
+     * @return {Node|undefined}          The closest matching parent node or undefined
+     */
+    closest: function(node, selector) {
+      var matches = node.matches || node.msMatchesSelector || node.oMatchesSelector;
+
+      while (node) {
+        if (matches.call(node, selector)) {
+          return node;
+        }
+        node = node.parentElement;
+      }
+    }
+  };
+
+  /** @polymerBehavior */
+  Polymer.PolyToolboxBehavior = [
+    Polymer.PolyToolboxImpl
+  ];
+</script>
