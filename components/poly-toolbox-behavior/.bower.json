@@ -1,0 +1,38 @@
+{
+  "name": "poly-toolbox-behavior",
+  "authors": [
+    "Peter Kaske <p.kaske@gmail.com>"
+  ],
+  "description": "Simple polymer behavior that provides some useful functions.",
+  "license": "MIT",
+  "keywords": [
+    "polymer",
+    "web-components",
+    "web-component",
+    "utils",
+    "tools"
+  ],
+  "main": "fe-button.html",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+  },
+  "homepage": "https://github.com/pkaske/poly-toolbox-behavior",
+  "_release": "04735045f1",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "04735045f1ce3c10a63a431a1e5fbffc06f234cc"
+  },
+  "_source": "git://github.com/pkaske/poly-toolbox-behavior.git",
+  "_target": "master",
+  "_originalSource": "pkaske/poly-toolbox-behavior",
+  "_direct": true
+}
