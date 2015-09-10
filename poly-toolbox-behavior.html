@@ -54,14 +54,14 @@ Or see the LICENSE file that comes with this code.
        * @param  {[Number]} oldIndex [description]
        * @param  {[Number]} newIndex [description]
        */
-      arrayMove: function(oldIndex, newIndex) {
-        if (newIndex >= this.length) {
-            var k = newIndex - this.length;
+      arrayMove: function(arr, oldIndex, newIndex) {
+        if (newIndex >= arr.length) {
+            var k = newIndex - arr.length;
             while ((k--) + 1) {
-                this.push(undefined);
+                arr.push(undefined);
             }
         }
-        this.splice(newIndex, 0, this.splice(oldIndex, 1)[0]);
+        arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
       }
     };
 
