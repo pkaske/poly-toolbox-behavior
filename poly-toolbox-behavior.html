@@ -45,6 +45,23 @@ Or see the LICENSE file that comes with this code.
           }
           node = node.parentElement;
         }
+      },
+
+      /**
+       * Moves a array element from `oldIndex` to `newIndex`.
+       * This operation is done on the array itself, so it doesn't return a new array.
+       *
+       * @param  {[Number]} oldIndex [description]
+       * @param  {[Number]} newIndex [description]
+       */
+      arrayMove: function(oldIndex, newIndex) {
+        if (newIndex >= this.length) {
+            var k = newIndex - this.length;
+            while ((k--) + 1) {
+                this.push(undefined);
+            }
+        }
+        this.splice(newIndex, 0, this.splice(oldIndex, 1)[0]);
       }
     };
 
