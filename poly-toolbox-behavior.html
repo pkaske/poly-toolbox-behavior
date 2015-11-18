@@ -62,7 +62,17 @@ Or see the LICENSE file that comes with this code.
             }
         }
         arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
-      }
+      },
+
+      /**
+       * Get index of `el` in its parent children collection.
+       *
+       * @param  {[HTMLNode]} el Element to search for.
+       * @return {Number}    -1 of not found.
+       */
+      getElementIndex: function(el) {
+				return Array.prototype.indexOf.call(el.parentNode.children, el);
+			}
     };
 
     /** @polymerBehavior */
