@@ -12,3 +12,6 @@ First node that's checked is `node` itself.
 ### arrayMove(oldIndex, newIndex)
 Moves an array item from `oldIndex` to `newIndex`.
 This is done on the array itself, without returning a copy.
+
+### getElementIndex(el)
+Gets the index of `el` in its parent `children` collection.
