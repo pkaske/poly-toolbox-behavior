@@ -34,16 +34,25 @@ Or see the LICENSE file that comes with this code.
        *
        * @param  {Node} node     Node to start with
        * @param  {String} selector Query selector for the test
+       * @param  {Boolean} pierce If true, will travel through shadow dom boundaries.
        * @return {Node|undefined}          The closest matching parent node or undefined
        */
-      closest: function(node, selector) {
+      closest: function(node, selector, pierce) {
         var matches = node.matches || node.msMatchesSelector || node.oMatchesSelector;
 
         while (node) {
           if (matches.call(node, selector)) {
             return node;
           }
-          node = node.parentElement;
+
+          if (pierce && !node.parentElement) {
+            node = Polymer.dom(node).getOwnerRoot();
+            if (node) {
+              node = node.host;
+            }
+          } else {
+            node = node.parentElement;
+          }
         }
       },
 

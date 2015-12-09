@@ -5,9 +5,10 @@ Simple polymer behavior that provides some useful functions.
 
 Visit the [component page](http://pkaske.github.io/poly-toolbox-behavior) for demos and in-depth docs.
 
-### closest(node, selector)
+### closest(node, selector, pierce)
 Find closest parent node matching the selector.
 First node that's checked is `node` itself.
+If `pierce` is `true` the method will travel even through shadow dom boundaries.
 
 ### arrayMove(oldIndex, newIndex)
 Moves an array item from `oldIndex` to `newIndex`.
