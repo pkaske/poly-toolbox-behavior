@@ -81,7 +81,34 @@ Or see the LICENSE file that comes with this code.
        */
       getElementIndex: function(el) {
 				return Array.prototype.indexOf.call(el.parentNode.children, el);
-			}
+			},
+
+      /**
+       * Wait for some test go be true, then resolv.
+       * Useful to wait for element render, for example. Uses requestAnimationFrame.
+       *
+       * @param  {Function} testFn    Test function to call. Should return true to resolv and false to continue testing.
+       * @param  {Number}   maxTries  Maximum number of rounds to test. If exceeded, the promise is rejected. Defaults to 5000.
+       * @return {Promise}            Promise that is resolved after the test was successful.
+       */
+      waitFor: function(testFn, maxTries) {
+        var tries = 0;
+        maxTries = maxTries || 5000;
+        return new Promise(function(resolve, reject) {
+          (function waiter() {
+            if (tries === maxTries) {
+              return reject();
+            }
+
+            if (!testFn()) {
+              window.requestAnimationFrame(waiter);
+              tries++;
+              return;
+            }
+            resolve();
+          })();
+        });
+      }
     };
 
     /** @polymerBehavior */
